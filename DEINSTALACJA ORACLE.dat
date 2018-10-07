@@ -1,0 +1,53 @@
+drop table PLACOWKA cascade constraints ;
+drop table PRACA cascade constraints ;
+drop table RODZAJ_PRACY cascade constraints ;
+drop table ROZLICZENIE cascade constraints ;
+drop table UDOGODNIENIA cascade constraints ;
+drop table WIEZIEN cascade constraints ;
+drop table DETALE_ROZLICZENIA cascade constraints; 
+
+
+--drop sequence 
+
+drop sequence SEQ_DETALE_ROZLICZENIA;
+drop sequence SEQ_FAKTURY_LICZNIK_POCZ;
+drop sequence SEQ_ROZLICZENIE;
+drop sequence WIEZIEN_IN;
+
+--drop funkcje
+
+DROP FUNCTION FN_ILE_FAKTUR;
+DROP FUNCTION FN_ILOSC_WIEZNIOW;
+DROP FUNCTION FN_LOSUJ;
+DROP FUNCTION FN_NR_UDOGODNIENIA;
+
+
+--drop procedury
+
+DROP PROCEDURE PR_DETALE_I_UPDATE_ROZLICZENIE;
+
+--drop widokow
+drop view ILU_WIEZNIOW_W_1_PLACOWCE;
+drop view ILU_WIEZNIOW_W_2_PLACOWCE;
+drop view ILU_WIEZNIOW_W_3_PLACOWCE;
+drop view ZAROBEK_1_PLACOWKI;
+drop view ZAROBEK_2_PLACOWKI;
+drop view ZAROBEK_3_PLACOWKI;
+drop view OGOLNY_ZAROBEK_PLACOWEK;
+drop view ZAROBEK_WIEZNIOW;
+drop view TOP_5_DOCHODOWYCH_WIEZNIOW;
+drop view Rozliczenia;
+
+--USUWANIE pakietu dbms
+
+BEGIN
+    DBMS_SCHEDULER.DROP_JOB(job_name => 'ROZLICZENIE_WIEZNIOW');
+end;
+/
+BEGIN
+    DBMS_SCHEDULER.DROP_PROGRAM(program_name => 'FAKTUROWANIE');
+END;
+/
+BEGIN
+    DBMS_SCHEDULER.DROP_SCHEDULE(schedule_name => 'DZIENNIE');
+END;
